@@ -1,0 +1,132 @@
+// Variables de diseño
+$primary-color: #007bff; // Azul principal
+$secondary-color: #666; // Gris secundario
+$background-color: #f9f9f9; // Fondo de las citas
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); // Sombra de los elementos
+$border-radius: 10px; // Esquinas redondeadas
+$text-color: #333; // Texto principal
+$text-muted-color: #999; // Texto secundario
+$danger-color: #dc3545; // Rojo para eliminar
+
+// Contenedor principal centrado
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; // Ocupa toda la altura de la ventana
+  padding: 1.5rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #e9ecef); // Fondo degradado
+}
+
+// Caja para la cita
+.quote-box {
+  background-color: $background-color;
+  border: 1px solid adjust-color($background-color, $lightness: 10%); // Reemplazo de lighten
+  border-radius: $border-radius;
+  padding: 2rem;
+  max-width: 600px;
+  box-shadow: $box-shadow;
+  margin-bottom: 1.5rem;
+
+  // Animación sutil para cambios
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Estilo del texto de la cita
+.quote-text {
+  font-size: 1.8rem;
+  font-style: italic;
+  color: $primary-color;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+// Estilo del autor de la cita
+.quote-author {
+  font-size: 1.2rem;
+  color: $secondary-color;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+// Mensaje cuando no hay citas
+.no-quotes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.4rem;
+  color: $text-muted-color;
+  background: adjust-color($background-color, $lightness: 5%); // Reemplazo de lighten
+  border-radius: $border-radius;
+  padding: 2rem;
+}
+
+// Botón flotante para agregar citas
+ion-fab-button {
+  background: $primary-color;
+  color: #fff;
+  width: 56px; // Tamaño ajustado
+  height: 56px;
+  font-size: 1.4rem; // Tamaño del ícono
+  border-radius: 50%; // Mantiene el botón redondo
+
+  &:hover {
+    background: adjust-color($primary-color, $lightness: -10%); // Reemplazo de darken
+  }
+
+  ion-icon {
+    font-size: 1.6rem; // Ícono más grande para mejor visibilidad
+  }
+}
+
+// Botón de eliminar cita
+ion-button[color="danger"] {
+  margin-top: 1rem;
+  background: $danger-color;
+  color: #fff;
+  border-radius: $border-radius;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background: adjust-color($danger-color, $lightness: -10%); // Reemplazo de darken
+  }
+
+  ion-icon {
+    font-size: 1.4rem; // Ícono más grande para mejor visibilidad
+    margin: 0; // Centrado
+  }
+}
+
+// Responsividad
+@media (max-width: 768px) {
+  .quote-box {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .quote-text {
+    font-size: 1.5rem;
+  }
+
+  .quote-author {
+    font-size: 1rem;
+  }
+
+  ion-fab-button {
+    width: 50px; // Tamaño reducido en pantallas pequeñas
+    height: 50px;
+    font-size: 1.2rem; // Ícono más pequeño
+  }
+
+  ion-button[color="danger"] {
+    padding: 0.4rem 0.8rem; // Ajuste de tamaño
+  }
+}

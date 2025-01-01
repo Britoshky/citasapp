@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Citas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToSettings()" aria-label="Configuración">
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="8" size-lg="6">
+        <!-- Contenedor centralizado para la cita -->
+        <div 
+          class="center-container" 
+          *ngIf="quote; else noQuotesTemplate" 
+          aria-live="polite" 
+          aria-atomic="true"
+        >
+          <div class="quote-box">
+            <p class="quote-text">{{ quote.phrase }}</p>
+            <p class="quote-author">— {{ quote.author }}</p>
+          </div>
+
+          <!-- Botón de eliminar solo si está habilitado -->
+          <ion-button
+            *ngIf="allowDeleteQuotes"
+            fill="clear"
+            color="danger"
+            (click)="deleteCurrentQuote()"
+            aria-label="Eliminar cita"
+          >
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </div>
+
+        <!-- Mensaje alternativo si no hay citas -->
+        <ng-template #noQuotesTemplate>
+          <div class="no-quotes" aria-live="assertive">
+            <p>No hay citas disponibles.</p>
+          </div>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Botón flotante para ir a la gestión de citas -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToManageQuotes()" aria-label="Añadir cita">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

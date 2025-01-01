@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gestión de Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulario para agregar una nueva cita -->
+  <form [formGroup]="quoteForm" (ngSubmit)="addQuote()" class="quote-form">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Crear una nueva cita</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-label position="stacked">Cita</ion-label>
+          <ion-input formControlName="phrase"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="phraseControl?.touched && phraseControl?.invalid">
+          <p *ngIf="phraseControl?.errors?.['required']">La frase es obligatoria.</p>
+          <p *ngIf="phraseControl?.errors?.['minlength']">La frase debe tener al menos 5 caracteres.</p>
+        </div>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Autor</ion-label>
+          <ion-input formControlName="author"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="authorControl?.touched && authorControl?.invalid">
+          <p *ngIf="authorControl?.errors?.['required']">El autor es obligatorio.</p>
+          <p *ngIf="authorControl?.errors?.['minlength']">El autor debe tener al menos 2 caracteres.</p>
+        </div>
+
+        <ion-button type="submit" expand="block" [disabled]="quoteForm.invalid" color="primary">
+          Agregar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+
+   <!-- Lista de citas -->
+   <app-quotes-list
+   [quotes]="paginatedQuotes"
+   [currentPage]="currentPage"
+   [totalPages]="totalPages"
+   (deleteQuote)="deleteQuote($event)"
+   (pageChange)="displayPage($event)"
+ ></app-quotes-list>
+</ion-content>

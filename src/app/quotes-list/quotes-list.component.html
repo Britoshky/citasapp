@@ -1,0 +1,32 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Lista de citas</ion-card-title>
+  </ion-card-header>
+  <ion-list>
+    <ion-item *ngFor="let quote of quotes">
+      <ion-label>
+        <p><strong>{{ quote.phrase }}</strong></p>
+        <small>— {{ quote.author }}</small>
+      </ion-label>
+      <ion-button
+        color="danger"
+        slot="end"
+        (click)="onDeleteQuote(quote.id)"
+        aria-label="Eliminar cita"
+      >
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-card>
+
+<!-- Contenedor de la paginación -->
+<div *ngIf="totalPages > 1" class="pagination-container">
+  <ion-button [disabled]="currentPage === 1" (click)="onPreviousPage()">
+    Anterior
+  </ion-button>
+  <span>Página {{ currentPage }} de {{ totalPages }}</span>
+  <ion-button [disabled]="currentPage === totalPages" (click)="onNextPage()">
+    Siguiente
+  </ion-button>
+</div>

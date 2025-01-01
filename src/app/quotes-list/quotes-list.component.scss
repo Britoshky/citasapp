@@ -1,0 +1,104 @@
+:host {
+    display: block;
+    padding: 1rem;
+    background: #f7f8fa;
+  
+    ion-card {
+      --background: #ffffff;
+      --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+  
+      ion-card-header {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: #ffffff;
+        border-radius: 12px 12px 0 0;
+        padding: 1rem;
+        text-align: center;
+  
+        ion-card-title {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+      }
+  
+      ion-list {
+        padding: 0;
+  
+        ion-item {
+          --background: #f7f8fa;
+          border-bottom: 1px solid #e0e0e0;
+          border-radius: 8px;
+          margin: 0.5rem 0;
+          padding: 1rem;
+  
+          ion-label {
+            font-family: 'Arial', sans-serif;
+            color: #333333;
+  
+            p {
+              font-size: 1.2rem;
+              font-weight: bold;
+              margin: 0;
+            }
+  
+            small {
+              font-size: 1rem;
+              color: #888888;
+            }
+          }
+  
+          ion-button {
+            --background: #ff5a5f;
+            --color: #ffffff;
+            --box-shadow: 0 4px 8px rgba(255, 90, 95, 0.2);
+            --padding-top: 0.5rem;
+            --padding-bottom: 0.5rem;
+  
+            &:hover {
+              --background: #e0484c;
+            }
+  
+            ion-icon {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      gap: 1rem;
+  
+      ion-button {
+        --background: none; /* Elimina el fondo duplicado */
+        background: linear-gradient(135deg, #0078ff, #4facfe); /* Fondo personalizado */
+        color: #ffffff;
+        border-radius: 8px;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        box-shadow: 0 4px 8px rgba(0, 120, 255, 0.2);
+  
+        &:disabled {
+          background: #cccccc;
+          color: #666666;
+          box-shadow: none;
+        }
+  
+        &:hover:not(:disabled) {
+          filter: brightness(0.9);
+        }
+      }
+  
+      span {
+        font-size: 1rem;
+        color: #333333;
+        font-weight: bold;
+      }
+    }
+  }
+  

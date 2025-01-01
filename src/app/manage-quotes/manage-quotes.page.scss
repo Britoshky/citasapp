@@ -1,0 +1,155 @@
+$primary-color: #0078ff;
+$secondary-color: #7f8c8d;
+$text-muted-color: #b0b0b0;
+$text-color: #333333;
+:host {
+  ion-content {
+    --background: #f9f9f9; /* Fondo del contenido */
+  }
+}
+
+/* Estilo del formulario */
+.quote-form {
+  margin: 16px;
+
+  ion-card {
+    --background: #ffffff; /* Fondo de la tarjeta */
+    --border-radius: 12px; /* Bordes redondeados más definidos */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más prominente */
+    padding: 16px; /* Espaciado interno */
+  }
+
+  .error-message {
+    margin: 8px 0;
+    color: #e74c3c; /* Rojo para mensajes de error */
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    p {
+      display: flex;
+      align-items: center;
+
+      &:before {
+        content: '⚠';
+        margin-right: 8px;
+        font-size: 1.2rem; /* Icono más visible */
+      }
+    }
+  }
+}
+
+/* Títulos de las tarjetas */
+ion-card-title {
+  font-size: 1.5rem; /* Tamaño más grande */
+  color: #2c3e50; /* Azul oscuro */
+  font-weight: bold;
+  text-align: center; /* Centrar texto */
+}
+
+/* Encabezado de las tarjetas */
+ion-card-header {
+  --background: #f1f1f1; /* Fondo gris claro */
+  padding: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Línea sutil debajo del encabezado */
+}
+
+/* Estilo de los items */
+ion-item {
+  margin: 12px 0;
+  --background: #ffffff; /* Fondo blanco para consistencia */
+  --border-radius: 8px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+}
+
+/* Botones del formulario */
+ion-button {
+  margin-top: 16px;
+  --background: linear-gradient(45deg, #0078ff, #4facfe); /* Gradiente moderno */
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+  font-size: 1rem;
+  font-weight: bold;
+
+  &:disabled {
+    opacity: 0.6; /* Botón deshabilitado más claro */
+  }
+}
+
+/* Lista de citas */
+.list-section {
+  margin: 16px;
+
+  ion-card {
+    --background: #ffffff;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+
+  ion-item {
+    --background: #f9f9f9;
+    --border-radius: 8px;
+    --padding-start: 16px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+
+    ion-label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      p {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #34495e;
+      }
+
+      small {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+      }
+    }
+
+    ion-button {
+      --background: #e74c3c; /* Rojo para el botón de eliminar */
+      --color: #ffffff;
+      --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        --background: #c0392b; /* Más oscuro en hover */
+      }
+    }
+  }
+
+  .empty-list {
+    text-align: center;
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin-top: 16px;
+  }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+
+  ion-button {
+    background-color: $primary-color;
+    color: white;
+
+    &:disabled {
+      background-color: $secondary-color;
+      color: $text-muted-color;
+    }
+  }
+
+  span {
+    font-size: 1.2rem;
+    color: $text-color;
+  }
+}
