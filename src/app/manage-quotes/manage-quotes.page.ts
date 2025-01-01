@@ -15,7 +15,12 @@ import { QuoteService } from '../services/quote.service';
   templateUrl: './manage-quotes.page.html',
   styleUrls: ['./manage-quotes.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, ReactiveFormsModule, QuotesListComponent],
+  imports: [
+    IonicModule,
+    CommonModule,
+    ReactiveFormsModule,
+    QuotesListComponent,
+  ],
 })
 export class ManageQuotesPage implements OnInit {
   quotes: { id: number; phrase: string; author: string }[] = [];
@@ -64,11 +69,24 @@ export class ManageQuotesPage implements OnInit {
     try {
       this.quotes = await this.quoteService.getAllQuotes();
       this.totalPages = Math.ceil(this.quotes.length / this.itemsPerPage);
-      // Siempre muestra la página actual después de actualizar las citas
-      this.displayPage(this.currentPage > this.totalPages ? this.totalPages : this.currentPage);
+
+      // Si no hay citas, limpiar la página actual y las citas paginadas
+      if (this.quotes.length === 0) {
+        this.currentPage = 1;
+        this.paginatedQuotes = [];
+      } else {
+        // Siempre muestra la página actual después de actualizar las citas
+        this.displayPage(
+          this.currentPage > this.totalPages
+            ? this.totalPages
+            : this.currentPage
+        );
+      }
     } catch (error) {
       console.error('Error refreshing quotes:', error);
-      this.showToast('Error al cargar las citas. Por favor, intenta nuevamente.');
+      this.showToast(
+        'Error al cargar las citas. Por favor, intenta nuevamente.'
+      );
     }
   }
 
@@ -78,7 +96,6 @@ export class ManageQuotesPage implements OnInit {
     this.paginatedQuotes = this.quotes.slice(start, end);
   }
 
-
   async addQuote(): Promise<void> {
     if (this.quoteForm.valid) {
       const { phrase, author } = this.quoteForm.value;
@@ -87,14 +104,16 @@ export class ManageQuotesPage implements OnInit {
           this.isDatabaseInitialized = await this.initializeDatabase();
           if (!this.isDatabaseInitialized) return;
         }
-  
+
         await this.quoteService.addQuote(phrase, author);
         await this.refreshQuotes(); // Refresca las citas después de agregar
         this.resetForm();
         this.showToast('Cita añadida exitosamente.');
       } catch (error) {
         console.error('Error adding quote:', error);
-        this.showToast('Error al añadir la cita. Por favor, intenta nuevamente.');
+        this.showToast(
+          'Error al añadir la cita. Por favor, intenta nuevamente.'
+        );
       }
     } else {
       this.quoteForm.markAllAsTouched();
@@ -105,7 +124,10 @@ export class ManageQuotesPage implements OnInit {
   async deleteQuote(id: number): Promise<void> {
     try {
       await this.quoteService.deleteQuote(id);
+
+      // Refrescar las citas después de eliminar
       await this.refreshQuotes();
+
       this.showToast('Cita eliminada exitosamente.');
     } catch (error) {
       console.error('Error deleting quote:', error);
@@ -116,11 +138,16 @@ export class ManageQuotesPage implements OnInit {
   }
 
   displayPage(page: number) {
-    if (page < 1 || page > this.totalPages) return;
-  
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+
     this.currentPage = page;
+
     const startIndex = (page - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
+
+    // Actualizar las citas visibles
     this.paginatedQuotes = this.quotes.slice(startIndex, endIndex);
   }
 
@@ -129,7 +156,7 @@ export class ManageQuotesPage implements OnInit {
       this.displayPage(this.currentPage - 1);
     }
   }
-  
+
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.displayPage(this.currentPage + 1);

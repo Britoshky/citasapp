@@ -75,8 +75,8 @@
       gap: 1rem;
   
       ion-button {
-        --background: none; /* Elimina el fondo duplicado */
-        background: linear-gradient(135deg, #0078ff, #4facfe); /* Fondo personalizado */
+        --background: none; 
+        background: linear-gradient(135deg, #0078ff, #4facfe); 
         color: #ffffff;
         border-radius: 8px;
         font-weight: bold;
