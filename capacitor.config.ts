@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.hbrito.quotesapp',
-  appName: 'QuotesApp',
+  appId: 'com.hbrito.citasapp',
+  appName: 'citasapp',
   webDir: 'www',
   plugins: {
     CapacitorSQLite: {
