@@ -53,7 +53,7 @@ Para utilizar QuotesApp, necesitas cumplir con los siguientes requisitos previos
 
 ## Características Técnicas
 
-QuotesApp está diseñada para ser una solución robusta y eficiente, implementando las siguientes características:
+citasApp está diseñada para ser una solución robusta y eficiente, implementando las siguientes características:
 
 - **Persistencia Local**: Utiliza SQLite para almacenar todas las citas localmente, garantizando su disponibilidad incluso sin conexión a internet.
 - **Validación de Formularios**: Los formularios verifican en tiempo real que los datos ingresados cumplan con los requisitos establecidos.
@@ -67,5 +67,5 @@ El desarrollo de QuotesApp presentó desafíos interesantes. Inicialmente, se pr
 
 Una mejora futura sería la implementación de funcionalidad para editar citas y la sincronización de datos en la nube, asegurando un acceso universal a las citas independientemente del dispositivo utilizado. El proyecto actual es funcional, escalable y fácil de mantener.
 
-QuotesApp representa un esfuerzo dedicado para ofrecer una experiencia de usuario sólida, eficiente y estéticamente atractiva.
+citasApp representa un esfuerzo dedicado para ofrecer una experiencia de usuario sólida, eficiente y estéticamente atractiva.
 
